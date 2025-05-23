@@ -1,13 +1,38 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="preload" href="fonts/Pretendard-Medium.subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEUNGYEON LEE</title>
+  <style>
+    #loading-screen {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease-out;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loading-screen">🚀 로딩 중...</div> <!-- 초반 로딩 화면 -->
+  <div id="root"></div>
+  <script>
+    // React가 마운트되면 로딩 화면 제거
+    window.onload = () => {
+      const loader = document.getElementById("loading-screen");
+      if (loader) {
+        loader.style.display = "none";
+      }
+    };
+  </script>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

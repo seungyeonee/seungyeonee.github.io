@@ -1,18 +1,25 @@
-import { createBrowserRouter, RouterProvider, type LoaderFunction, type ActionFunction, } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  type LoaderFunction,
+  type ActionFunction,
+} from "react-router-dom";
+import CommonLayout from "./components/layout/CommonLayout";
+import { StackProvider } from "./context/StackContext";
 
 interface RouteCommon {
   loader?: LoaderFunction;
   action?: ActionFunction;
-  ErrorBoundary?: React.ComponentType<any>;
+  ErrorBoundary?: React.ComponentType<unknown>;
 }
 
 interface IRoute extends RouteCommon {
   path: string;
-  Element: React.ComponentType<any>;
+  Element: React.ComponentType<unknown>;
 }
 
 interface Pages {
-  [key: string]: { default: React.ComponentType<any> } & RouteCommon;
+  [key: string]: { default: React.ComponentType<unknown> } & RouteCommon;
 }
 
 const pages: Pages = import.meta.glob("./pages/**/*.tsx", { eager: true });
@@ -29,7 +36,9 @@ for (const path of Object.keys(pages)) {
   let normalizedPathName = fileName.replace(/\/page$/, "").toLowerCase();
 
   if (normalizedPathName.includes("$") || normalizedPathName.includes("[")) {
-    normalizedPathName = normalizedPathName.replace("$", ":").replace(/\[(.*?)\]/g, ":$1");
+    normalizedPathName = normalizedPathName
+      .replace("$", ":")
+      .replace(/\[(.*?)\]/g, ":$1");
   }
 
   routes.push({
@@ -44,13 +53,23 @@ for (const path of Object.keys(pages)) {
 const router = createBrowserRouter(
   routes.map(({ Element, ErrorBoundary, ...rest }) => ({
     ...rest,
-    element: <Element />,
+    element: (
+      <>
+        <CommonLayout>
+          <Element />
+        </CommonLayout>
+      </>
+    ),
     ...(ErrorBoundary && { errorElement: <ErrorBoundary /> }),
   }))
 );
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <StackProvider>
+      <RouterProvider router={router} />
+    </StackProvider>
+  );
 };
 
 export default App;
