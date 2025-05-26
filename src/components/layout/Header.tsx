@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import css from "./Header.module.scss";
-import { HamburgerMenu } from "iconsax-reactjs";
 import { useEffect } from "react";
 import { useStack } from "../../context/StackContext";
 
@@ -22,7 +21,8 @@ const Header = () => {
               addStack("Nav");
             }}
           >
-            <HamburgerMenu size="32" color="#555555" />
+            임시버튼
+            {/*  <HamburgerMenu size="32" color="#555555" /> */}
           </button>
         </div>
       </header>

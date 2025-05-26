@@ -7,7 +7,7 @@
       "@/*": ["./src/*"],
       "components/*":["./src/components/*"]
     },
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "module": "esnext",
     "target": "ESNext",
     "lib": ["ESNext", "DOM"] // import.meta 사용 가능하도록 라이브러리 추가

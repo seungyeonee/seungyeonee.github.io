@@ -1,6 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import css from "./Header.module.scss";
-import { CloseSquare } from "iconsax-reactjs";
 import { useStack } from "../../context/StackContext";
 
 const Nav = () => {
@@ -78,7 +77,7 @@ const Nav = () => {
               removeStack("Nav");
             }}
           >
-            <CloseSquare size="32" color="#555555" />
+            닫기 임시
           </button>
         </nav>
       </aside>
