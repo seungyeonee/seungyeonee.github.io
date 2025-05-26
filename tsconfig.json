@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
+    "outDir": "dist",
+    "rootDir": "src",
+    "noEmit": true,
     /* Paths */
     "baseUrl": ".",  //절대경로 디렉터리 설정
     "paths": {
@@ -12,5 +15,6 @@
     "target": "ESNext",
     "lib": ["ESNext", "DOM"] // import.meta 사용 가능하도록 라이브러리 추가
   },
-  "include": ["src"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }
