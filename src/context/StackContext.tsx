@@ -1,12 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import type * as TYPES from "@/types";
 
-type StackContextType = {
-  stacks: string[];
-  addStack: (item: string) => void;
-  removeStack: (item: string) => void;
-};
-
-const StackContext = createContext<StackContextType | undefined>(undefined);
+const StackContext = createContext<TYPES.StackContext | undefined>(undefined);
 
 export const StackProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

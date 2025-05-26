@@ -21,6 +21,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+
+    /* Paths */
+    "baseUrl": ".",  //절대경로 디렉터리 설정
+    "paths": {
+      "@/*": ["./src/*"],
+    },
   },
   "include": ["src"]
 }
